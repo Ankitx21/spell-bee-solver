@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Spell Bee Solver</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Spell Bee Solver</h1>
+        <form action="/" method="post">
+            <label for="user_input">Enter 7 alphabets (without spaces): </label>
+            <input type="text" id="user_input" name="user_input" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if word_list %}
+            <div class="result">
+                <p>All possible words with the given alphabets:</p>
+                <ul>
+                    {% for word in word_list %}
+                        <li>{{ word }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {% if perfect_pangrams %}
+            <div class="result">
+                <p>Perfect Pangrams: {{ ', '.join(perfect_pangrams) }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
